@@ -1,0 +1,27 @@
+{
+  "name": "beerapi",
+  "version": "1.0.0",
+  "description": "our own version of the beer api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlferSoft/beerAPI.git"
+  },
+  "keywords": [
+    "beer",
+    "api",
+    "alfsilfer"
+  ],
+  "author": "Alfonso SF & Fernando PA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlferSoft/beerAPI/issues"
+  },
+  "homepage": "https://github.com/AlferSoft/beerAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
