@@ -9,7 +9,7 @@ console.log("Server running and listening on port: " + process.env.PORT);
 
 //connect to DB
 mongoose
-  .connect(process.env.DBURL, {useNewUrlParser: true})
+  .connect(process.env.DBURL, {useNewUrlParser: true, useUnifiedTopology: true })
   .then( db => 
     console.log(
       `Connected to Mongo! Database name: ${db.connections[0].name}`
