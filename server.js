@@ -9,12 +9,13 @@ console.log("Server running and listening on port: " + process.env.PORT);
 
 //connect to DB
 mongoose
-  .connect(process.env.DBURL, {useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DBURL, { useNewUrlParser: true })
   .then( db => 
     console.log(
       `Connected to Mongo! Database name: ${db.connections[0].name}`
     )
   )
+  .catch( err => console.error("error connecting to database", err))
 
 //autoDisconnect from mongo on SIGINT
 process.on("SIGINT", () => {
