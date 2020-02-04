@@ -36,3 +36,7 @@ const beerSchema = Schema({
     updatedAt: "updated_at"
   }
 })
+
+const Beer = mongoose.model("Beer", beerSchema)
+
+module.exports = Beer;

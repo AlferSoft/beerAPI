@@ -11,11 +11,12 @@ async function importBeers() {
   
   let count = 1;
   let finish = false;
+  const fullData = []
   while (!finish) {
     let url = `https://api.punkapi.com/v2/beers?page=${count}&per_page=80` 
     let data = await axios.get(url)
     if (data.data.length > 0) {
-      fs.appendFile("beers.json", JSON.stringify(data.data), err => { if (err) throw err})
+      fullData.push(...data.data)
       console.log(count)
       count++
       await delay(1000)
@@ -23,6 +24,7 @@ async function importBeers() {
       console.log(count)
       console.log("end")
       finish = true
+      fs.appendFile("beers.json", JSON.stringify(fullData), err => { if (err) throw err})
     }
   }
 }
