@@ -3,9 +3,10 @@ require("dotenv").config();
 const express = require("express")
 const mongoose = require("mongoose")
 
+const app = require("./api/app.js")
+
 //instantiate server
 const server = express();
-console.log("Server running and listening on port: " + process.env.PORT);
 
 //connect to DB
 mongoose
@@ -17,6 +18,9 @@ mongoose
   )
   .catch( err => console.error("error connecting to database", err))
 
+//setting up middleware
+app(server);
+
 //autoDisconnect from mongo on SIGINT
 process.on("SIGINT", () => {
   mongoose.connection.close(() => {
@@ -27,4 +31,7 @@ process.on("SIGINT", () => {
   })
 })
 
-server.listen(3010)
+server.listen(process.env.PORT, () => {
+  console.log("Server running and listening on port: " + process.env.PORT);
+  }
+)
