@@ -7,7 +7,6 @@ const app = require("./api/app.js")
 
 //instantiate server
 const server = express();
-console.log("Server running and listening on port: " + process.env.PORT);
 
 //connect to DB
 mongoose
@@ -32,4 +31,7 @@ process.on("SIGINT", () => {
   })
 })
 
-server.listen(3010)
+server.listen(process.env.PORT, () => {
+  console.log("Server running and listening on port: " + process.env.PORT);
+  }
+)
