@@ -30,5 +30,24 @@ module.exports = {
         console.error("[Controller] Error saving new beer", err)
       })
     return createdBeer 
+  },
+
+  async updateBeerByName(body){
+    const { name } = body
+    const update = { ...body }
+    delete update.name
+    const updatedBeer = await Beer.findOneAndUpdate( {name}, update, {new: true} )
+      .catch( err => console.error("[Controller] Error updating beer by name", err))
+    return updatedBeer
+  },
+
+  async updateBeerByBeerId(body){
+    const { beerId } = body
+  
+  },
+
+  async updateBeerById(body){
+    const { id } = body
+  
   }
 }
