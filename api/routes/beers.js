@@ -5,7 +5,9 @@ const {
   getBeers, 
   getBeerById,
   createBeer,
-  updateBeerByName
+  updateBeerByName,
+  updateBeerByBeerId,
+  updateBeerById
 } = require("../controllers/index.js")
 
 router.get("/get", async (req, res) => {
@@ -42,6 +44,20 @@ router.post("/update-by-name", async (req, res) => {
   console.log("/beers/update-by-name hit")
   const updatedBeer = await updateBeerByName(req.body)
     .catch( err => console.error("[Routes] Error updating beer by name", err))
+  res.status(200).json(updatedBeer)
+})
+
+router.post("/update-by-beerid", async (req, res) => {
+  console.log("/beers/update-by-beerid hit")
+  const updatedBeer = await updateBeerByBeerId(req.body)
+    .catch( err => console.error("[Routes] Error updating beer by beerID", err))
+  res.status(200).json(updatedBeer)
+})
+
+router.post("/update-by-id", async (req, res) => {
+  console.log("/beers/update-by-id hit")
+  const updatedBeer = await updateBeerById(req.body)
+    .catch( err => console.error("[Routes] Error updating beer by id", err))
   res.status(200).json(updatedBeer)
 })
 
