@@ -7,7 +7,10 @@ const {
   createBeer,
   updateBeerByName,
   updateBeerByBeerId,
-  updateBeerById
+  updateBeerById,
+  removeByName,
+  removeByBeerId,
+  removeById
 } = require("../controllers/index.js")
 
 router.get("/get", async (req, res) => {
@@ -50,7 +53,7 @@ router.post("/update-by-name", async (req, res) => {
 router.post("/update-by-beerid", async (req, res) => {
   console.log("/beers/update-by-beerid hit")
   const updatedBeer = await updateBeerByBeerId(req.body)
-    .catch( err => console.error("[Routes] Error updating beer by beerID", err))
+    .catch( err => console.error("[Routes] Error updating beer by beerId", err))
   res.status(200).json(updatedBeer)
 })
 
@@ -59,6 +62,27 @@ router.post("/update-by-id", async (req, res) => {
   const updatedBeer = await updateBeerById(req.body)
     .catch( err => console.error("[Routes] Error updating beer by id", err))
   res.status(200).json(updatedBeer)
+})
+
+router.post("/remove-by-name", async (req, res) => {
+  console.log("/beers/remove-by-name hit")
+  const removedBeer = await removeByName(req.body)
+    .catch( err => console.error("[Routes] Error removing beer by name", err))
+  res.status(200).json(removedBeer)
+})
+
+router.post("/remove-by-beerid", async (req, res) => {
+  console.log("/beers/remove-by-beerid hit")
+  const removedBeer = await removeByBeerId(req.body)
+    .catch( err => console.error("[Routes] Error removing beer by beerId", err))
+  res.status(200).json(removedBeer)
+})
+
+router.post("/remove-by-id", async (req, res) => {
+  console.log("/beers/remove-by-id hit")
+  const removedBeer = await removeById(req.body)
+    .catch( err => console.error("[Routes] Error removing beer by name", err))
+  res.status(200).json(removedBeer)
 })
 
 module.exports = router;

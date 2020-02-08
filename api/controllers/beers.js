@@ -59,6 +59,29 @@ module.exports = {
     const update = { ...body }
     delete update._body
     const updatedBeer = await Beer.findByIdAndUpdate( _id, update, {new: true})
+      .catch( err => console.error("[Controller] Error updating beer by _id", err))
     return updatedBeer 
+  },
+
+  //remove controllers
+  async removeByName(body){
+    const { name } = body
+    const removedBeer = await Beer.findOneAndRemove({name})
+      .catch(err => console.error("[Controller] Error removing beer by name" ,err))
+    return removedBeer
+  },
+
+  async removeByBeerId(body){
+    const { id: beerId } = body
+    const removedBeer = await Beer.findOneAndRemove({id: beerId})
+      .catch(err => console.error("[Controller] Error removing beer by beerId" ,err))
+    return removedBeer
+  },
+
+  async removeById(body){
+    const { _id } = body
+    const removedBeer = await Beer.findByIdAndRemove(_id)
+      .catch(err => console.error("[Controller] Error removing beer by _id" ,err))
+    return removedBeer
   }
 }
