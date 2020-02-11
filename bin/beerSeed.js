@@ -10,6 +10,11 @@ async function importBeers() {
     .then( db => console.log(`Connected to Mongo! Database name: ${db.connections[0].name}`))
     .catch(err => console.error("Error connecting to mongo", err))
 
+  const beersToImport = await beers.map( beer => {
+    delete beer.id
+    return beer
+  })
+
   Beer.create(beers)
     .then( result => {
       console.log(`succesfully saved ${result.length} records from beers.json to the DB`)
