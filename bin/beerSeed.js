@@ -15,8 +15,6 @@ async function importBeers() {
     return beer
   })
 
-  console.log(beersToImport[10])
-
   Beer.create(beers)
     .then( result => {
       console.log(`succesfully saved ${result.length} records from beers.json to the DB`)
