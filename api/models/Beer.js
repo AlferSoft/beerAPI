@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const autoIncrement = require("mongoose-auto-increment");
+
+let connection = mongoose.createConnection(process.env.DBURL)
+
+autoIncrement.initialize(connection)
 
 const beerSchema = Schema({
   id: Number,
@@ -37,6 +42,8 @@ const beerSchema = Schema({
   }
 })
 
-const Beer = mongoose.model("Beer", beerSchema)
+beerSchema.plugin(autoIncrement.plugin, { model: "Beer", field: "id"})
+
+const Beer = connection.model("Beer", beerSchema)
 
 module.exports = Beer;
