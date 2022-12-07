@@ -23,11 +23,11 @@
   "homepage": "https://github.com/AlferSoft/beerAPI#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongoose": "^5.8.10",
     "mongoose-auto-increment": "^5.0.1"
   }
